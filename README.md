@@ -1,38 +1,32 @@
-# SLIMETIME 🧪
+# SLIMETIME
 
-A gooey neon-green countdown website. Set a time, pick how it's displayed, and share the drop.
+A little countdown site for moments worth waiting for. Live at **[slime-time.at](https://slime-time.at/)**.
 
-## Features
+## Use it
 
-- **SLIME TIME IN X MIN** — live countdown with seconds and a progress bar.
-- **SLIME TIME AT HH:MM** — show the target time in the viewer's local time zone.
-- Quick presets and a custom date/time picker.
-- Fullscreen stage for projecting or streaming.
-- Shareable links with the target timestamp and display mode.
-- Responsive desktop/mobile layout, animated slime visuals, and local preference persistence.
+- Switch between **SLIME TIME IN X MIN** and **SLIME TIME AT HH:MM**.
+- Tap a quick preset (15 minutes to 2 hours), or pick a custom local date/time.
+- Copy a link to share the exact target moment and display mode.
+- Put the countdown into fullscreen for a bigger display.
 
-## Run locally
+The countdown runs in the browser and updates every second. It saves your last future target in local storage, and existing shared URLs using `?at=<unix-milliseconds>&mode=in|at` continue to work. Times shown in `AT` mode are localized to each viewer's device.
 
-Open `index.html` in a modern browser. No build system or backend is required.
+## Run it
 
-Alternatively, run a static HTTP server in the repository:
+Open `index.html` in a browser, or serve the folder locally:
 
 ```bash
 python -m http.server 8080
 ```
 
-Then open `http://localhost:8080`.
+No build step, backend, API keys or package dependencies. The display font comes from Google Fonts with local fallbacks.
 
 ## Deploy
 
-Host `index.html` with any static-site provider such as GitHub Pages or Cloudflare Pages. No environment variables or server-side components are needed.
+GitHub Pages publishes the `main` branch at the root. The `CNAME` file is intentionally preserved so Pages continues using **slime-time.at**. Merge a PR to deploy a new version.
 
-**GitHub Pages:** After merging, go to **Settings → Pages** in the repository, choose **Deploy from a branch**, then select `main` and `/(root)`. Your site will be served from the Pages URL after deployment.
+## Design approach
 
-**Sharing:** Once hosted over HTTPS, use **COPY DROP LINK** to share the exact target time and selected display mode. When opening the HTML as a local file, the button copies a human-readable time instead.
+Version 2 is built around one hand-drawn slime character and an oversized green countdown, like an old event flyer or sticker. Controls use subdued greens instead of neon glows, competing gradients and constant floating animations. Focus, pressed, validation, arrival, and reduced-motion states are handled explicitly.
 
-## Notes
-
-- Times entered through the picker use the browser's local time zone.
-- The countdown updates once a second and rounds up the remaining minutes.
-- The site uses Google Fonts where available and falls back to system fonts.
+Design review drew on [unslop by Damir Sokolovsky](https://github.com/heydamir/unslop) (CC BY 4.0) and [Anti-Slop Frontend Skill](https://github.com/ItsRealAJ/Anti-Slop-Frontend-Skill). No source files from those projects are bundled here.
